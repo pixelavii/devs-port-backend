@@ -6,9 +6,9 @@ if (!MONGODB_URI) {
   throw new Error("Please define the MONGODB_URI environment variable");
 }
 
+mongoose.set('strictQuery', true);
 const connection = {};
 async function dbConnect() {
-  mongoose.set('strictQuery', true);
   if (connection.isConnected) {
     // Use the cached connection if available
     console.log("Connection Build Successfully");
