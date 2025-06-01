@@ -59,19 +59,30 @@ app.post('/api/auth/getDetails', async (req, res) => {
 app.post('/api/auth/login', async (req, res) => {
 
     console.log(req.body);
+    console.log("Step 1")
     mongoose.set('strictQuery', true);
+    console.log("Step 2");
     await dbConnect();
+    console.log("Step 3");
     if (req.method !== "POST") {
+        console.log("Step End")
         return res.status(405).json({ message: "Method not allowed" });
     }
     try {
+        console.log("Step 4")
         const { email, password } = req.body;
         const user = await User.findOne({ email });
+        console.log(user)
+        console.log("Step 5")
         if (!user) return res.status(404).json({ message: "User not found" });
+        console.log("Step 6")
         const isMatch = await user.comparePassword(password);
+        console.log("Step 7")
         if (!isMatch) return res.status(400).json({ message: "Invalid credentials" });
         const token = jwt.sign({ id: user._id, role: user.role }, secret, { expiresIn: "1h" });
+        console.log("Step 8")
         const id = user._id.toString(); //Here we get the user id.
+        console.log("Step 9")
         return res.status(200).send({ token, id, user: user.username });
     } catch (error) {
         return res.status(500).json({ message: error.message });
