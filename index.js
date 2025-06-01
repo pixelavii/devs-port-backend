@@ -19,7 +19,7 @@ const secret = process.env.JWT_SECRET || "secret_key";
 dotenv.config();
 
 const app = express();
-const allowedOrigins = ['https://devsport.vercel.app/', 'http://localhost:3000'];
+const allowedOrigins = ['https://devsport.vercel.app/', 'https://devsport.vercel.app/login', 'https://devsport.vercel.app/register', 'http://localhost:3000'];
 app.use(cors({
   origin: function (origin, callback) {
     if (!origin) return callback(null, true);
@@ -29,13 +29,19 @@ app.use(cors({
       return callback(new Error('Not allowed by CORS'));
     }
   },
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true,
 }));
+
+
+app.options('*', cors());
+
+app.use(express.json());
 app.use(helmet());
 app.use(compression());
 // app.use(express.static('public'));
 app.use(morgan("combined"));
-app.use(express.json());
 
 
 
