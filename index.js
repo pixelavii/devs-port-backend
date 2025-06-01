@@ -10,6 +10,7 @@ import jwt from "jsonwebtoken";
 import helmet from "helmet";
 import compression from "compression";
 import morgan from "morgan";
+import mongoose from 'mongoose';
 
 
 
@@ -20,8 +21,8 @@ dotenv.config();
 const app = express();
 app.use(express.json());
 app.use(cors({
-  origin: ['https://devsport.vercel.app/'],
-  credentials: true,
+    origin: ['https://devsport.vercel.app/'],
+    credentials: true,
 }));
 
 app.use(helmet());
@@ -51,6 +52,8 @@ app.post('/api/auth/getDetails', async (req, res) => {
 
 // login Function
 app.post('/api/auth/login', async (req, res) => {
+
+    mongoose.set('strictQuery', true);
     await dbConnect();
     if (req.method !== "POST") {
         return res.status(405).json({ message: "Method not allowed" });
@@ -597,8 +600,8 @@ app.post('/api/getLinkedinName', async (req, res) => {
 
 
 app.use((err, req, res, next) => {
-  console.error("Server Error:", err.stack);
-  res.status(500).json({ message: "Something went wrong!" });
+    console.error("Server Error:", err.stack);
+    res.status(500).json({ message: "Something went wrong!" });
 });
 
 
