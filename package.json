@@ -1,0 +1,30 @@
+{
+  "name": "devsport-backend",
+  "version": "1.0.0",
+  "description": "DevsPort Backend",
+  "license": "MIT",
+  "author": "Avinash Chaurasia",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "autoprefixer": "^10.4.20",
+    "axios": "^1.8.1",
+    "bcryptjs": "^2.4.3",
+    "compression": "^1.8.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^5.1.0",
+    "formidable": "^2.0.1",
+    "helmet": "^8.1.0",
+    "jsonwebtoken": "^9.0.0",
+    "mongoose": "^6.0.14",
+    "morgan": "^1.10.0",
+    "nodemon": "^3.1.10",
+    "puppeteer": "^24.4.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  }
+}
