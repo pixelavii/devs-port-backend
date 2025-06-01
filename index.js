@@ -32,7 +32,7 @@ app.use(morgan("combined"));
 
 
 
-app.options('*', cors());
+// app.options('*', cors());
 
 // getDetails Function
 app.post('/api/auth/getDetails', async (req, res) => {
@@ -596,12 +596,6 @@ app.post('/api/getLinkedinName', async (req, res) => {
                 .json({ message: "Can't fetch data from linkedin" });
         }
     }
-});
-
-
-app.use((err, req, res, next) => {
-    console.error("Server Error:", err.stack);
-    res.status(500).json({ message: "Something went wrong!" });
 });
 
 
