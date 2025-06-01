@@ -19,20 +19,25 @@ const secret = process.env.JWT_SECRET || "secret_key";
 dotenv.config();
 
 const app = express();
-app.use(express.json());
+const allowedOrigins = ['https://devsport.vercel.app/', 'http://localhost:3000'];
 app.use(cors({
-    origin: ['https://devsport.vercel.app/'],
-    credentials: true,
+  origin: function (origin, callback) {
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.includes(origin)) {
+      return callback(null, true);
+    } else {
+      return callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true,
 }));
-
 app.use(helmet());
 app.use(compression());
-app.use(express.static('public'));
+// app.use(express.static('public'));
 app.use(morgan("combined"));
+app.use(express.json());
 
 
-
-// app.options('*', cors());
 
 // getDetails Function
 app.post('/api/auth/getDetails', async (req, res) => {
@@ -53,6 +58,7 @@ app.post('/api/auth/getDetails', async (req, res) => {
 // login Function
 app.post('/api/auth/login', async (req, res) => {
 
+    console.log(req.body);
     mongoose.set('strictQuery', true);
     await dbConnect();
     if (req.method !== "POST") {
