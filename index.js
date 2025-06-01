@@ -32,7 +32,7 @@ app.use(morgan("combined"));
 
 
 // getDetails Function
-app.post('/api/auth/getDetails', async (req, res) => {
+app.post('https://devsport.vercel.app/api/auth/getDetails', async (req, res) => {
     try {
         const ID = req.body.userID;
         await dbConnect();
@@ -48,7 +48,7 @@ app.post('/api/auth/getDetails', async (req, res) => {
 
 
 // login Function
-app.post('/api/auth/login', async (req, res) => {
+app.post('https://devsport.vercel.app/api/auth/login', async (req, res) => {
     await dbConnect();
     if (req.method !== "POST") {
         return res.status(405).json({ message: "Method not allowed" });
@@ -69,7 +69,7 @@ app.post('/api/auth/login', async (req, res) => {
 
 
 // register Function
-app.post('/api/auth/register', async (req, res) => {
+app.post('https://devsport.vercel.app/api/auth/register', async (req, res) => {
     await dbConnect();
     if (req.method !== "POST") {
         return res.status(405).json({ message: "Method not allowed" });
@@ -86,7 +86,7 @@ app.post('/api/auth/register', async (req, res) => {
 
 
 // setDetails Function
-app.post('/api/auth/setDetails', async (req, res) => {
+app.post('https://devsport.vercel.app/api/auth/setDetails', async (req, res) => {
     if (req.method !== "POST") {
         return res.status(405).json({ message: "Method not allowed" });
     }
@@ -114,7 +114,7 @@ app.post('/api/auth/setDetails', async (req, res) => {
 
 
 // getDb Function
-app.post('/api/auth/getDb', async (req, res) => {
+app.post('https://devsport.vercel.app/api/auth/getDb', async (req, res) => {
     try {
         const ID = req.body.userID;
         await dbConnect();
@@ -134,7 +134,7 @@ app.post('/api/auth/getDb', async (req, res) => {
 
 
 // registerData Fuction
-app.post('/api/auth/registerData', async (req, res) => {
+app.post('https://devsport.vercel.app/api/auth/registerData', async (req, res) => {
     await dbConnect();
 
     if (req.method !== "POST") {
@@ -224,7 +224,7 @@ app.post('/api/auth/registerData', async (req, res) => {
 
 
 // getLeetCodeProfile Function  
-app.post('/api/getLeetcode', async (req, res) => {
+app.post('https://devsport.vercel.app/api/getLeetcode', async (req, res) => {
     if (req.method === "POST") {
         try {
             const leetcodeProfile = req.body.leetcodeData;
@@ -311,7 +311,7 @@ app.post('/api/getLeetcode', async (req, res) => {
 
 
 // getInstagramProfile Function
-app.post('/api/getInstagram', async (req, res) => {
+app.post('https://devsport.vercel.app/api/getInstagram', async (req, res) => {
     if (req.method !== "POST") {
         return res.status(405).json({ message: "Method not allowed" });
     }
@@ -393,7 +393,7 @@ app.post('/api/getInstagram', async (req, res) => {
 
 
 // getStackOverflowProfile Function
-app.post('/api/getStackOverflow', async (req, res) => {
+app.post('https://devsport.vercel.app/api/getStackOverflow', async (req, res) => {
     if (req.method === "POST") {
         try {
             const stackOverflowProfileUrl = req.body.stackoverflowData;
@@ -442,7 +442,7 @@ app.post('/api/getStackOverflow', async (req, res) => {
 
 
 // getGithub Function
-app.post('/api/getGithub', async (req, res) => {
+app.post('https://devsport.vercel.app/api/getGithub', async (req, res) => {
     if (req.method === "POST") {
         try {
             const githubProfile = req.body.gitData;
@@ -500,7 +500,7 @@ app.post('/api/getGithub', async (req, res) => {
 
 
 // getLinkedinName Function
-app.post('/api/getLinkedinName', async (req, res) => {
+app.post('https://devsport.vercel.app/api/getLinkedinName', async (req, res) => {
     if (req.method === "POST") {
         try {
             const imgLink = req.body.linkedinData;
