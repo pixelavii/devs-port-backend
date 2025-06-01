@@ -31,6 +31,8 @@ app.use(morgan("combined"));
 
 
 
+app.options('*', cors());
+
 // getDetails Function
 app.post('/api/auth/getDetails', async (req, res) => {
     try {
@@ -129,8 +131,6 @@ app.post('/api/auth/getDb', async (req, res) => {
         return res.status(200).json({ message: "Login First" });
     }
 })
-
-
 
 
 // registerData Fuction
@@ -594,6 +594,13 @@ app.post('/api/getLinkedinName', async (req, res) => {
         }
     }
 });
+
+
+app.use((err, req, res, next) => {
+  console.error("Server Error:", err.stack);
+  res.status(500).json({ message: "Something went wrong!" });
+});
+
 
 
 
