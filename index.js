@@ -21,19 +21,11 @@ dotenv.config();
 const app = express();
 
 
-const allowedOrigins = ['https://devsport.vercel.app/', 'https://devsport.vercel.app/login', 'https://devsport.vercel.app/register', 'http://localhost:3000'];
+// const allowedOrigins = ['https://devsport.vercel.app/', 'http://localhost:3000'];
 app.use(cors({
-  origin: function (origin, callback) {
-    if (!origin) return callback(null, true);
-    if (allowedOrigins.includes(origin)) {
-      return callback(null, true);
-    } else {
-      return callback(new Error('Not allowed by CORS'));
-    }
-  },
+  origin: '*',
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
-  credentials: true,
+  allowedHeaders: ['Content-Type', 'Authorization']
 }));
 app.use(express.json());
 app.use(helmet());
