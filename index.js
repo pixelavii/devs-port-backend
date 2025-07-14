@@ -51,7 +51,7 @@ app.post('/api/auth/login', async (req, res) => {
 
     console.log(req.body);
     console.log("Step 1")
-    mongoose.set('strictQuery', true);
+    // mongoose.set('strictQuery', true);
     console.log("Step 2");
     await dbConnect();
     console.log("Step 3");
