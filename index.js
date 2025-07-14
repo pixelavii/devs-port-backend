@@ -7,9 +7,9 @@ import SocialDetails from './models/UserDetails.js';
 import dbConnect from "./utils/dbConnect.js";
 import User from "./models/User.js";
 import jwt from "jsonwebtoken";
-import helmet from "helmet";
-import compression from "compression";
-import morgan from "morgan";
+// import helmet from "helmet";
+// import compression from "compression";
+// import morgan from "morgan";
 import mongoose from 'mongoose';
 
 
@@ -22,15 +22,11 @@ const app = express();
 
 
 // const allowedOrigins = ['https://devsport.vercel.app/', 'http://localhost:3000'];
-app.use(cors({
-  origin: '*',
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  allowedHeaders: ['Content-Type', 'Authorization']
-}));
+app.use(cors());
 app.use(express.json());
-app.use(helmet());
-app.use(compression());
-app.use(morgan("combined"));
+// app.use(helmet());
+// app.use(compression());
+// app.use(morgan("combined"));
 
 
 
