@@ -241,7 +241,7 @@ app.post('/api/getLeetcode', async (req, res) => {
             const leetcodeProfile = req.body.leetcodeData;
             // Launch Puppeteer in headless mode
             const browser = await puppeteer.launch({
-                headless: false,
+                headless: true,
                 args: ["--no-sandbox", "--disable-setuid-sandbox"],
             });
             const page = await browser.newPage();
@@ -413,7 +413,7 @@ app.post('/api/getStackOverflow', async (req, res) => {
             const browser = await puppeteer.launch({
                 headless: true,
                 // Uncomment and adjust the args if needed:
-                // args: ['--no-sandbox', '--disable-setuid-sandbox']
+                args: ['--no-sandbox', '--disable-setuid-sandbox']
             });
             const page = await browser.newPage();
 
@@ -461,7 +461,7 @@ app.post('/api/getGithub', async (req, res) => {
             // Launch Puppeteer (headless mode is true for production)
             const browser = await puppeteer.launch({
                 headless: true,
-                // args: ['--no-sandbox', '--disable-setuid-sandbox']
+                args: ['--no-sandbox', '--disable-setuid-sandbox']
             });
 
             const page = await browser.newPage();
@@ -521,7 +521,7 @@ app.post('/api/getLinkedinName', async (req, res) => {
             console.log("Step 1");
             const browser = await puppeteer.launch({
                 headless: true,
-                // args: ["--no-sandbox", "--disable-setuid-sandbox"],
+                args: ["--no-sandbox", "--disable-setuid-sandbox"],
             });
             const page = await browser.newPage();
 
